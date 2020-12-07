@@ -16,7 +16,7 @@ required_fields = {
                        end},
     "hcl" => ->(val) { /^#[0-9a-f]{6}$/.match(val) },
     "ecl" => ->(val) { /^(amb|blu|brn|gry|grn|hzl|oth)$/.match(val) },
-    "pid" => ->(val) { /^[[:digit:]]{9}$/ }}
+    "pid" => ->(val) { /^[[:digit:]]{9}$/.match(val) }}
 
 def validate_passport(passport, required_fields)
   current_passport = {}
