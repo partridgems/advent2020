@@ -27,7 +27,7 @@ STDIN.read.each_line do |bag|
     child_multiplier = 0
     parts[1].split(" ").each do |child_piece|
       if child_piece[0,3] == "bag"  # End of this bag
-        multiplier.times child_bags << child
+        child_multiplier.times { child_bags << child }
         child = ""
       elsif /[0-9]/.match(child_piece)  # Multiplier.
         child_multiplier = child_piece.to_i
@@ -40,5 +40,5 @@ STDIN.read.each_line do |bag|
 end
 
 # Done reading input. Now use memoization to compress all paths.
-puts(bag_size)
-puts(count_children("shiny gold", bag_child_map, bag_size))
+# Remember not to count the bag itself.
+puts(count_children("shiny gold", bag_child_map, bag_size) - 1)
